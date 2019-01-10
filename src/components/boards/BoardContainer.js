@@ -2,22 +2,41 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import CreateBoardContainer from './boardCreation/CreateBoardContainer';
+import ShowAllBoards from './ShowAllBoards';
 
 const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(to top, #b224ef 0%, #7579ff 100%);
   padding: 60px 35px;
+  display: flex;
+  flex-wrapping: wrap;
 `
 
 class BoardContainer extends Component {
+  renderAllBoards = () => {
+    const { boardsCollection } = this.props;
+    return boardsCollection.map(board => {
+      return (
+        <ShowAllBoards 
+          id={board.id}
+          key={board.id} 
+          title={board.title} />
+      )
+    });
+  }
+
   render() {
     return (
       <Wrapper>
         <CreateBoardContainer/>
+        {this.renderAllBoards()}
       </Wrapper>
     )
   }
 }
 
-export default connect(null)(BoardContainer);
+function mapStateToProps({boardsCollection}) {
+  return {
+    boardsCollection
+  }
+}
+
+export default connect(mapStateToProps)(BoardContainer);

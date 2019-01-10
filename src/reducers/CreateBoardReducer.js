@@ -36,13 +36,16 @@ export default function(state=initialState, action) {
       return {
         ...state,
         title: action.payload,
-        isBoardOpen: true,
+        isBoardOpen: false,
         id: Math.floor(100000+Math.random()*900000)
       }
     
       case CLEAN_NEW_BOARD:
         return {
           ...state,
+          title: null,
+          id: null,
+          success: null,
         }
     
     default:
