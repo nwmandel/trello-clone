@@ -2,8 +2,8 @@ import {
   CANCEL_NEW_BOARD, 
   CREATE_NEW_BOARD,
   SUBMIT_NEW_BOARD, 
-  CLEAN_NEW_BOARD,
 } from '../actions/ActionTypes';
+import uniqueId from 'lodash/uniqueId'
 
 const initialState = { 
   isBoardOpen: false, 
@@ -37,16 +37,8 @@ export default function(state=initialState, action) {
         ...state,
         title: action.payload,
         isBoardOpen: false,
-        id: Math.floor(100000+Math.random()*900000)
+        id: uniqueId(''),
       }
-    
-      case CLEAN_NEW_BOARD:
-        return {
-          ...state,
-          title: null,
-          id: null,
-          success: null,
-        }
     
     default:
       return state;

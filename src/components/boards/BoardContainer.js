@@ -33,7 +33,7 @@ class BoardContainer extends Component {
   }
 }
 
-function mapStateToProps({boardsCollection}) {
+function mapStateToProps({ boardsCollection }) {
   return {
     boardsCollection
   }

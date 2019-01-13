@@ -1,20 +1,12 @@
 import {
-  RECIEVE_NEW_BOARD,
+  STORE_NEW_BOARD_TO_COLLECTION,
 } from './../actions/ActionTypes'
 
 const initialState = []
 
 export default function (state=initialState, action) {
   switch (action.type) {
-    case RECIEVE_NEW_BOARD:
-      console.log('state', state);
-      console.log('action.payload', action.payload);
-      // const { title, id } = action.payload;
-      // return {
-      //   ...state,
-      //   title,
-      //   id,
-      // }
+    case STORE_NEW_BOARD_TO_COLLECTION:
       return [...state, action.payload];
     default:
       return state;
