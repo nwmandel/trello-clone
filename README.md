@@ -1,4 +1,4 @@
-#### trello clone
+# trello clone
 ### Made with React and Redux
 
 ### `npm start`
