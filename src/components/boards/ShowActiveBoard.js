@@ -21,31 +21,35 @@ class ShowActiveBoard extends Component {
     selectActiveBoard(match.params.id);
   }
 
-  handleSubmit = values => {
+  handleSubmitList = values => {
     this.props.submitList(values.listItem);
   }
 
+  
   render() {
     const { activeBoard, enableListEditMode } = this.props;
-    if (activeBoard.isFetching) {
+    // console.log('show props', this.props);
+    if (!activeBoard.isFetching) {
+      return (
+        <div>
+          <ActiveBoardTitle>
+            { activeBoard.title }
+          </ActiveBoardTitle>
+          <ListWrapper>
+              <ListItemsContainer />
+              { activeBoard.isEditingList
+                  ? <ListEditingMode onSubmit={ this.handleSubmitList } />
+                  : <CreateNewList addList={ enableListEditMode } />
+              }
+          </ListWrapper>
+        </div>
+      )
+    } else {
       return (
         <div>loading...</div>
       )
+      
     }
-    return (
-      <div>
-        <ActiveBoardTitle>
-          { this.props.activeBoard.title }
-        </ActiveBoardTitle>
-        <ListWrapper>
-            <ListItemsContainer />
-            { activeBoard.isEditingList
-                ? <ListEditingMode onSubmit={ this.handleSubmit } />
-                : <CreateNewList addList={ enableListEditMode } />
-            }
-        </ListWrapper>
-      </div>
-    )
   }
 }
 

@@ -1,11 +1,9 @@
-import Store from './../Store';
 import {
   SELECT_ACTIVE_BOARD,
   SELECT_ACTIVE_BOARD_SUCCESS,
   LIST_EDIT_MODE_ENABLED,
   STOP_EDITING_LIST,
 } from './../actions/ActionTypes';
-import _ from 'lodash';
 
 const initialState = {
   title: null,
@@ -39,7 +37,7 @@ export default function(state=initialState, action) {
           isEditingList: action.payload
         };
     default:
-      return {...state};
+      return { ...state };
   }
 }
 

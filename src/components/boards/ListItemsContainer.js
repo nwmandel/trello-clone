@@ -11,24 +11,24 @@ const ListItemsWrapper = styled.div`
 class ListItemsContainer extends Component {
   renderListItems = () => {
     const { activeBoardData } = this.props;
-    console.log('activeboarddata is', this.props)
+    console.log('props', this.props);
     const mappedList = mapValues(activeBoardData.listItems, list => list.name);
     const mappedKeys = Object.keys(mappedList);
-    return mappedKeys.map((id, i) => 
-      <ListItem id={ id } key={ i } name={ mappedList[id] } />
-    );
+    return mappedKeys.map((id, i) => <ListItem id={ id } key={ i } name={ mappedList[id] } />);
   }
   render() {
     return (
-      <ListItemsWrapper>
-        { this.renderListItems() }
-      </ListItemsWrapper>
+      <div>
+        <ListItemsWrapper>
+          { this.renderListItems() }
+        </ListItemsWrapper>
+      </div>
     )
   }
 }
 
-function mapStateToProps({ listItems }) {
-  return { listItems };
+function mapStateToProps({ activeBoardData }) {
+  return { activeBoardData };
 }
 
 export default connect(mapStateToProps)(ListItemsContainer);

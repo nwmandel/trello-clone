@@ -3,15 +3,25 @@ import styled from 'styled-components';
 import { connect } from 'react-redux'
 import { Wrapper } from './CreateNewList';
 import DisableListEditMode from './DisableListEditingMode';
-import disable from './../../actions/DisableListEditingMode';
+import disableListEditMode from './../../actions/DisableListEditingMode';
 import { reduxForm, Field, reset } from 'redux-form';
 import BoardTitleInput from './boardCreation/BoardTitleInput';
 
+const ListEditingModeWrapper = styled.div`
+    padding: 20px 12px;
+    height: 75px;
+    margin: 20px 0;
+    background-color: rgba(255, 255, 255, 0.45);
+    display: flex;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+`
+
 class ListEditingMode extends Component {
   render() {
-    const { disable, handleSubmit } = this.props;
+    const { disableListEditMode, handleSubmit } = this.props;
+    console.log('this.props asdf ', this.props);
     return (
-      <Wrapper>
+      <ListEditingModeWrapper>
         <form onSubmit={ handleSubmit }>
           <Field
             name="listItem"
@@ -19,8 +29,8 @@ class ListEditingMode extends Component {
             type="text"
             placeholder="add a list" />
           </form>
-          <DisableListEditMode disableList={ disable } />
-      </Wrapper>
+          <DisableListEditMode disableList={ disableListEditMode } />
+      </ListEditingModeWrapper>
     )
   }
 }
@@ -47,4 +57,4 @@ export default reduxForm({
   validate,
   form: 'listItem',
   onSubmitSuccess: afterSubmit,
-})(connect(mapStateToProps, { disable })(ListEditingMode));
+})(connect(mapStateToProps, { disableListEditMode })(ListEditingMode));

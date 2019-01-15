@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Title = styled.h2`
     color: black
+    word-break: break-all;
+    padding: 10px;
 `
 
 const BoardWrapper = styled.div`
@@ -24,9 +26,9 @@ const BoardWrapper = styled.div`
     font-weight: 900;
     text-shadow: 0px 0px 3px #white;
     &:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    transition: 200ms ease-in-out;
-    transform: scale(1.10);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      transition: 200ms ease-in-out;
+      transform: scale(1.10);
 }
 `
 

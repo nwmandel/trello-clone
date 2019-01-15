@@ -23,6 +23,10 @@ const ListItemHeader = styled.h4`
   font-weight: 900;
 `
 
+const ItemTypes = {
+  CARD: 'card'
+}
+
 const dropSource = {
   drop(props, monitor) {
     const card = monitor.getItem();
@@ -40,14 +44,15 @@ function collect(connect, monitor) {
   };
 }
 
-// @DropTarget(ItemTypes.CARD, dropSource, collect)
+@DropTarget(ItemTypes.CARD, dropSource, collect)
 class ListItem extends Component {
     render() {
       const { name, id, connectDropTarget } = this.props;
+      console.log('this.props listItem', this.props);
       return connectDropTarget(
         <div>
           <ListItemWrapper>
-            <ListItemHeader>{ name }</ListItemHeader>
+            <ListItemHeader>{  name ? name.name ? name.name : name : '' }</ListItemHeader>
             <hr />
             <CreateCardContainer listId={ id } />
           </ListItemWrapper>

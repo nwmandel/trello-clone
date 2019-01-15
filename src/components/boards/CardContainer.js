@@ -14,7 +14,7 @@ class CreateCardContainer extends Component {
     }
 
     renderCards = () => {
-      const { activeBoardData, listId } = this.props;
+      const { activeBoardData, listId, archiveCard } = this.props;
       return activeBoardData.listItems[listId].cards.map((card, i) => {
         return (
           <Card

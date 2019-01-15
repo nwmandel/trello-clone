@@ -20,8 +20,8 @@ const DisableButton = styled.svg`
   }
 `
 
-const DisableListEditMode = ({disableList}) => (
-  <DisableWrapper onClick={disableList}>
+const DisableListEditMode = ({ disableList }) => (
+  <DisableWrapper onClick={ disableList }>
     <DisableButton />
   </DisableWrapper>
 );

@@ -50,7 +50,7 @@ function collect(connect, monitor) {
   }
 }
 
-// @DragSource(ItemTypes.CARD, cardSource, collect)
+@DragSource(ItemTypes.CARD, cardSource, collect)
 class Card extends Component {
   static propTypes = {
     connectDragSource: PropTypes.func.isRequired,
